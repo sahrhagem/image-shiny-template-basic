@@ -34,30 +34,29 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     make \
     g++ \
     git \
-    chromium  \
-    chromium-driver \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    chromium \
-    chromium-driver \
-    && if command -v chromium; then \
-         ln -sf "$(command -v chromium)" /usr/bin/google-chrome; \
-         ln -sf "$(command -v chromium)" /usr/bin/chromium-browser; \
-       elif command -v chromium-browser; then \
-         ln -sf "$(command -v chromium-browser)" /usr/bin/chromium; \
-         ln -sf "$(command -v chromium-browser)" /usr/bin/google-chrome; \
-       else \
-         echo "No chromium binary found"; exit 1; \
-       fi \
-    && command -v chromedriver \
-    && /usr/bin/chromium --version \
-    && chromedriver --version \
+    wget \
+    gnupg \
+    ca-certificates \
+    fonts-liberation \
+    libnss3 \
+    libatk-bridge2.0-0 \
+    libxkbcommon0 \
+    libgbm1 \
+    libasound2t64 \
+    libxshmfence1 \
+    && wget -q -O /tmp/google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+    && apt-get install -y /tmp/google-chrome.deb \
+    && rm /tmp/google-chrome.deb \
+    && google-chrome --version \
     && rm -rf /var/lib/apt/lists/*
 
-ENV CHROME_BIN=/usr/bin/chromium
+ENV CHROME_BIN=/usr/bin/google-chrome
 ENV CHROMEDRIVER=/usr/bin/chromedriver
+
 COPY DESCRIPTION /tmp/app-deps/DESCRIPTION
 
 RUN R -e "install.packages('pak', repos='https://cloud.r-project.org')" && \
