@@ -41,3 +41,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 ENV CHROME_BIN=/usr/bin/chromium
 ENV CHROMEDRIVER=/usr/bin/chromedriver
+
+COPY DESCRIPTION /tmp/DESCRIPTION
+
+RUN R -e "install.packages('pak', repos='https://cloud.r-project.org')" && \
+    R -e "pak::local_install_deps('/tmp')"
