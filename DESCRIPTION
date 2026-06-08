@@ -1,0 +1,19 @@
+Package: image-shiny-template-basic
+Type: Package
+Title: Dependencies for Shiny Jenkins Base Image
+Version: 0.0.1
+Imports: 
+    bslib,
+    fs,
+    ggplot2 (>= 4.0.0),
+    gt,
+    htmltools,
+    shiny,
+    shiny.i18n,
+    showtext,
+    sysfonts,
+    usethis,
+    knitr,
+    rmarkdown,
+    shinytest2,
+    testthat (>= 3.0.0)
