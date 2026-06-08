@@ -4,6 +4,9 @@ Title: Dependencies for Shiny Jenkins Base Image
 Version: 0.0.1
 Imports: 
     bslib,
+    devtools,
+    remotes,
+    pak,
     fs,
     ggplot2 (>= 4.0.0),
     gt,
