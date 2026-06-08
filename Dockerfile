@@ -34,12 +34,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     make \
     g++ \
     git \
+    chromium  \
+    chromium-driver     
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-#Install Chrome
-RUN apt-get install -y --no-install-recommends \
-    chromium  \
-    chromium-driver 
-
-RUN export CHROME_BIN=/usr/bin/chromium
+ENV CHROME_BIN=/usr/bin/chromium
+ENV CHROMEDRIVER=/usr/bin/chromedriver
