@@ -30,7 +30,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     zlib1g-dev \
     libgit2-dev \
     libfontconfig1-dev \
-    libwebp-dev    
+    libwebp-dev \
     make \
     g++ \
     git \
